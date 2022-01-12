@@ -1,13 +1,15 @@
 {
-  "name": "config",
+  "name": "common-config",
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
   "files": [
-    "eslint-preset.js"
+    "eslint-preset.js",
+    "vite-base-preset.js"
   ],
   "dependencies": {
     "eslint-config-next": "^12.0.7",
-    "eslint-config-prettier": "^8.3.0"
+    "eslint-config-prettier": "^8.3.0",
+    "@vitejs/plugin-react": "^1.1.4"
   }
 }
