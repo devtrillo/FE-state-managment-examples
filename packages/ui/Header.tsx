@@ -1,13 +1,11 @@
-import PropTypes from "prop-types";
 import { FC, useEffect, useState } from "react";
-import { AiFillWindows, AiOutlineConsoleSql } from "react-icons/ai";
 
 type Props = {
-  strategy: string;
-  name: string;
+  strategy?: string;
+  name?: string;
 };
 
-export const Header: FC<Props> = ({ strategy = "NO Strategy", name }) => {
+export const Header: FC<Props> = ({ strategy, name }) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const onFocus = () => {
     if (
@@ -49,9 +47,4 @@ export const Header: FC<Props> = ({ strategy = "NO Strategy", name }) => {
       </button>
     </header>
   );
-};
-
-Header.propTypes = {
-  strategy: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
 };

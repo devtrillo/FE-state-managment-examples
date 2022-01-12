@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { motion } from "framer-motion";
 import { Pokemon } from "types";
+
 type Props = {
   pokemons: Pokemon;
 };
@@ -38,9 +39,11 @@ const PokeCard = ({ name, id }: { name: string; id: number }) => {
 export const PokeList: FC<Props> = ({ pokemons = [] }) => (
   <section className="flex-1">
     <ul className="flex flex-wrap items-center justify-center">
-      {pokemons.map(({ name }, index) => (
-        <PokeCard key={name} name={name} id={index} />
-      ))}
+      {pokemons
+        ? pokemons.map(({ name }, index) => (
+            <PokeCard key={name} name={name} id={index} />
+          ))
+        : null}
     </ul>
   </section>
 );
