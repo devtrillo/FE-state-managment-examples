@@ -1,19 +1,21 @@
-import { useState, useEffect, createContext, FC, useContext } from "react";
-import { POKE_API_URL } from "ui";
+import { createContext, FC, useContext, useEffect, useState } from "react";
 import { Pokemon } from "types";
+import { POKE_API_URL } from "ui";
 
 interface GlobalState {
   onToggle: () => void;
+  onReset: () => void;
   pokemons: Pokemon;
   running: boolean;
   seconds: number;
 }
 
 const GlobalContext = createContext<GlobalState>({
-  seconds: 0,
-  running: false,
+  onReset: () => {},
   onToggle: () => {},
   pokemons: undefined,
+  running: false,
+  seconds: 0,
 });
 
 export const GlobalContextProvider: FC = ({ children }) => {
@@ -36,15 +38,19 @@ export const GlobalContextProvider: FC = ({ children }) => {
         .then((res) => res.json())
         .then((data) => setPokemons(data?.results));
     }
-  }, [seconds > 2]);
+  }, [seconds, setPokemons]);
 
   return (
     <GlobalContext.Provider
       value={{
-        seconds,
-        running,
+        onReset: () => {
+          setRunning(false);
+          setSeconds(0);
+        },
         onToggle: () => setRunning((running) => !running),
         pokemons,
+        running,
+        seconds,
       }}
     >
       {children}
