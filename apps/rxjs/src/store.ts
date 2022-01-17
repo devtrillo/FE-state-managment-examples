@@ -33,3 +33,7 @@ export const useRunning = () => useObservableState(running$);
 export const useSeconds = () => useObservableState(seconds$);
 export const usePokemons = () => useObservableState(pokemon$);
 export const toggle = () => running$.next(!running$.value);
+export const reset = () => {
+  seconds$.next(0);
+  running$.next(false);
+};
