@@ -1,0 +1,30 @@
+{
+  "name": "recoil",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "recoil": "0.5.2",
+    "ui": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.2",
+    "common-config": "*",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.13",
+    "tsconfig": "*",
+    "types": "*",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
+  }
+}
