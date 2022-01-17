@@ -2,8 +2,10 @@
   "name": "effector",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
     "preview": "vite preview"
   },
   "dependencies": {

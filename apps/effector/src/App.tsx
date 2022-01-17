@@ -1,6 +1,7 @@
-import { Header, Stopwatch, PokeList, POKE_API_URL } from "ui";
-import { $running, $pokemons, $seconds, toggle } from "./store";
-import { useStore, useEvent } from "effector-react";
+import { useEvent,useStore } from "effector-react";
+import { Header,PokeList, Stopwatch } from "ui";
+
+import { $pokemons, $running, $seconds, reset,toggle } from "./store";
 
 function App() {
   const running = useStore($running);
@@ -11,7 +12,12 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header name="effector" strategy="Reactive" />
-      <Stopwatch onToggle={onToggle} running={running} seconds={seconds} />
+      <Stopwatch
+        reset={reset}
+        running={running}
+        seconds={seconds}
+        onToggle={onToggle}
+      />
       <PokeList pokemons={pokemons} />
     </div>
   );
