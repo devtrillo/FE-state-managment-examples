@@ -1,14 +1,8 @@
-import { Pokemon } from "types";
 import { createState, useState } from "@hookstate/core";
 import { useEffect } from "react";
+import { Pokemon } from "types";
 import { POKE_API_URL } from "ui";
 
-interface GlobalState {
-  onToggle: () => void;
-  pokemons: Pokemon;
-  running: boolean;
-  seconds: number;
-}
 export const seconds = createState(0);
 export const running = createState(false);
 export const pokemons = createState<Pokemon>(undefined);
