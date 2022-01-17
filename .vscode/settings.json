@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["hookstate", "pokemons", "tailwindcss", "vitejs"]
+  "cSpell.words": ["hookstate", "pokemons", "tailwindcss", "vitejs", "pokemon"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  }
 }

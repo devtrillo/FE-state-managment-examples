@@ -1,15 +1,30 @@
 {
   "name": "common-config",
   "version": "0.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "index.js",
   "files": [
     "eslint-preset.js",
-    "vite-base-preset.js"
+    "vite-base-preset.js",
+    "prettier-preset.js",
+    "jest-preset.js"
   ],
   "dependencies": {
-    "eslint-config-next": "^12.0.7",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@vitejs/plugin-react": "^1.1.4",
+    "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
-    "@vitejs/plugin-react": "^1.1.4"
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "jest": "^27.4.7",
+    "prettier": "2.5.1",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.1.2"
   }
 }

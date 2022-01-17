@@ -9,24 +9,42 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "format": "turbo run format",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "prepare": "husky install",
+    "reset": "find . -name 'dist' -type d -prune -exec rm -rf '{}' + && find . -name '.turbo' -type d -prune -exec rm -rf '{}' + && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+  },
+  "lint-staged": {
+    "package.json": "npx sort-package-json",
+    "*.{js,ts}": [
+      "prettier --write"
+    ],
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
+    "husky": "7.0.4",
+    "lint-staged": "12.1.7",
     "prettier": "^2.5.1",
     "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
   },
   "turbo": {
     "pipeline": {
       "build": {
         "dependsOn": [
-          "^build"
+          "^build",
+          "format"
         ],
         "outputs": [
-          "dist/**",
-          ".next/**"
+          "dist/**"
         ]
       },
+      "format": {},
       "lint": {
         "outputs": []
       },
@@ -34,9 +52,5 @@
         "cache": false
       }
     }
-  },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
   }
 }
