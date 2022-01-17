@@ -9,8 +9,8 @@ export interface StopwatchState {
 
 export function createInitialState(): StopwatchState {
   return {
-    seconds: 0,
     running: false,
+    seconds: 0,
   };
 }
 

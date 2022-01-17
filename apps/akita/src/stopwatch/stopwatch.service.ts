@@ -1,8 +1,9 @@
+import { Subscription } from "rxjs";
+import { Pokemon } from "types";
+import { POKE_API_URL } from "ui";
+
 import { stopwatchQuery } from "./stopwatch.query";
 import { StopwatchStore, stopwatchStore } from "./stopwatch.store";
-import { Subscription } from "rxjs";
-import { POKE_API_URL } from "ui";
-import { Pokemon } from "types";
 
 export class StopwatchService {
   private timer: number | undefined = undefined;
@@ -52,6 +53,19 @@ export class StopwatchService {
         });
       }, 100);
     }
+  }
+  stop() {
+    this.stopwatchStore.update({ running: false, seconds: 0 });
+
+    if (this.timer) {
+      window.clearInterval(this.timer);
+      this.timer = undefined;
+    }
+  }
+  toggle() {
+    this.stopwatchStore.update({
+      running: !this.stopwatchStore.getValue().running,
+    });
   }
 }
 

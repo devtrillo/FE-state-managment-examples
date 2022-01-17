@@ -1,4 +1,5 @@
-import { Header, Stopwatch, PokeList } from "ui";
+import { Header, PokeList, Stopwatch } from "ui";
+
 import {
   usePokemons,
   useRunning,
@@ -8,13 +9,19 @@ import { stopwatchService } from "./stopwatch/stopwatch.service";
 
 function App() {
   const running = useRunning();
-  const onToggle = () => stopwatchService.update({ running: !running });
+  const onToggle = () => stopwatchService.toggle();
+  const onReset = () => stopwatchService.stop();
   const seconds = useSeconds();
   const pokemons = usePokemons();
   return (
     <div className="min-h-screen flex flex-col">
       <Header name="akita" strategy="reactive" />
-      <Stopwatch onToggle={onToggle} running={running} seconds={seconds} />
+      <Stopwatch
+        reset={onReset}
+        running={running}
+        seconds={seconds}
+        onToggle={onToggle}
+      />
       <PokeList pokemons={pokemons} />
     </div>
   );

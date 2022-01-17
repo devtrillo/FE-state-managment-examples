@@ -2,8 +2,10 @@
   "name": "akita",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,10 +20,12 @@
   "devDependencies": {
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
+    "@typescript-eslint/parser": "^4.28.2",
     "@vitejs/plugin-react": "^1.0.7",
     "autoprefixer": "^10.4.2",
     "common-config": "*",
     "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.13",
     "tsconfig": "*",
     "types": "*",
