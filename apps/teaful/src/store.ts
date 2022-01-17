@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { POKE_API_URL } from "ui";
-import { Pokemon } from "types";
 import createStore from "teaful";
+import { Pokemon } from "types";
+import { POKE_API_URL } from "ui";
 
 type Store = {
   stopwatch: {
@@ -12,8 +12,8 @@ type Store = {
 };
 
 export const { useStore } = createStore<Store>({
-  stopwatch: { seconds: 0, running: false },
   pokemons: undefined,
+  stopwatch: { running: false, seconds: 0 },
 });
 
 export const useStopwatch = () => {
@@ -27,7 +27,7 @@ export const useStopwatch = () => {
       }, 100);
       return () => clearInterval(timer);
     }
-  }, [running]);
+  }, [running, setSeconds]);
 
   const [, setPokemons] = useStore.pokemons();
   useEffect(() => {
@@ -36,5 +36,5 @@ export const useStopwatch = () => {
         .then((res) => res.json())
         .then((data) => setPokemons(data?.results));
     }
-  }, [seconds > 2]);
+  }, [seconds, setPokemons]);
 };
