@@ -1,8 +1,10 @@
+import "./index.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import { StoreContext } from "storeon/react";
+
+import App from "./App";
 import { store } from "./store";
 
 ReactDOM.render(

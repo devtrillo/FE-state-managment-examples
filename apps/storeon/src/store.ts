@@ -9,13 +9,15 @@ interface StopwatchState {
 interface StopwatchEvents {
   increment: undefined;
   toggle: undefined;
+  reset: undefined;
 }
 const stopwatchModule: StoreonModule<StopwatchState, StopwatchEvents> = (
   store
 ) => {
   let timer: number | undefined;
-  store.on("@init", () => ({ seconds: 0, running: false }));
+  store.on("@init", () => ({ running: false, seconds: 0 }));
   store.on("increment", (state) => ({ seconds: state.seconds + 0.1 }));
+  store.on("reset", (state) => ({ running: false, seconds: 0 }));
   store.on("toggle", (state) => {
     if (!state.running)
       timer = window.setInterval(() => {
@@ -26,7 +28,7 @@ const stopwatchModule: StoreonModule<StopwatchState, StopwatchEvents> = (
   });
 };
 interface PokeState {
-  pokemon: string[] | undefined;
+  pokemon: Pokemon;
 }
 
 interface PokeEvents {
@@ -45,8 +47,6 @@ export const store = createStoreon<
 >([stopwatchModule, pokeModule]);
 
 store.on("@changed", async (state) => {
-  console.warn(state);
-
   if (state.seconds > 2 && !state.pokemon) {
     const data = await fetch(POKE_API_URL).then((res) => res.json());
     store.dispatch("setPokemon", data?.results);
