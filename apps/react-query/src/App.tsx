@@ -1,12 +1,18 @@
-import { Header, Stopwatch, PokeList, POKE_API_URL } from "ui";
+import { Header,PokeList, Stopwatch } from "ui";
+
 import { useGlobalState } from "./store";
 
 function App() {
-  const { onToggle, running, seconds, pokemons } = useGlobalState();
+  const { onToggle, running, seconds, pokemons, onReset } = useGlobalState();
   return (
     <div className="min-h-screen flex flex-col">
       <Header name="React Query" strategy="API+" />
-      <Stopwatch onToggle={onToggle} running={running} seconds={seconds} />
+      <Stopwatch
+        reset={onReset}
+        running={running}
+        seconds={seconds}
+        onToggle={onToggle}
+      />
       <PokeList pokemons={pokemons} />
     </div>
   );
