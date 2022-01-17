@@ -1,9 +1,10 @@
-import { MouseEvent, useState, useEffect } from "react";
-import { POKE_API_URL } from "ui";
+import { useEffect, useState } from "react";
 import { Pokemon } from "types";
+import { POKE_API_URL } from "ui";
 
 interface GlobalState {
   onToggle: () => void;
+  onReset: () => void;
   pokemons: Pokemon;
   running: boolean;
   seconds: number;
@@ -29,12 +30,16 @@ export const useGlobalState = (): GlobalState => {
         .then((res) => res.json())
         .then((data) => setPokemons(data?.results));
     }
-  }, [seconds > 2]);
+  }, [seconds]);
 
   return {
-    seconds,
-    running,
+    onReset: () => {
+      setRunning(false);
+      setSeconds(0);
+    },
     onToggle: () => setRunning((running) => !running),
     pokemons,
+    running,
+    seconds,
   };
 };
