@@ -2,17 +2,19 @@
   "name": "xstate-demo",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@xstate/react": "1.6.3",
+    "constants": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "ui": "*",
-    "constants": "*",
-    "xstate": "4.27.0",
-    "@xstate/react": "1.6.3"
+    "xstate": "4.27.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.33",
@@ -23,8 +25,8 @@
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.13",
     "tsconfig": "*",
+    "types": "*",
     "typescript": "^4.4.4",
-    "vite": "^2.7.2",
-    "types": "*"
+    "vite": "^2.7.2"
   }
 }
