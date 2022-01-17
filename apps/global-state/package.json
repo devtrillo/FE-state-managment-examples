@@ -2,8 +2,10 @@
   "name": "global-state",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,8 +24,8 @@
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.13",
     "tsconfig": "*",
+    "types": "*",
     "typescript": "^4.4.4",
-    "vite": "^2.7.2",
-    "types": "*"
+    "vite": "^2.7.2"
   }
 }

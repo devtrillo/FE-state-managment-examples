@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { POKE_API_URL } from "ui";
-import { Pokemon } from "types";
+import { useEffect } from "react";
 import { createGlobalState } from "react-hooks-global-state";
+import { Pokemon } from "types";
+import { POKE_API_URL } from "ui";
 
 interface GlobalState {
   onToggle: () => void;
@@ -9,11 +9,12 @@ interface GlobalState {
   running: boolean;
   seconds: number;
 }
+
 const { useGlobalState } = createGlobalState<GlobalState>({
-  seconds: 0,
-  running: false,
   onToggle: () => {},
   pokemons: undefined,
+  running: false,
+  seconds: 0,
 });
 
 export const useSeconds = () => useGlobalState("seconds");
@@ -31,7 +32,7 @@ export const useStopWatch = () => {
       }, 100);
       return () => clearInterval(timer);
     }
-  }, [running]);
+  }, [running, seconds, setSeconds]);
 
   const [, setPokemons] = usePokemons();
   useEffect(() => {
@@ -40,5 +41,5 @@ export const useStopWatch = () => {
         .then((res) => res.json())
         .then((data) => setPokemons(data?.results));
     }
-  }, [seconds > 2]);
+  }, [seconds, setPokemons]);
 };
