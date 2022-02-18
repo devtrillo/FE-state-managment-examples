@@ -6,23 +6,23 @@ interface GlobalState {
   onToggle: () => void;
   onReset: () => void;
   pokemons: Pokemon;
-  running: boolean;
+  isRunning: boolean;
   seconds: number;
 }
 
 export const useGlobalState = (): GlobalState => {
   const [seconds, setSeconds] = useState(0);
-  const [running, setRunning] = useState(false);
+  const [isRunning, setRunning] = useState(false);
   const [pokemons, setPokemons] = useState<Pokemon>();
 
   useEffect(() => {
-    if (running) {
+    if (isRunning) {
       const timer = setInterval(() => {
         setSeconds((seconds) => seconds + 0.1);
       }, 100);
       return () => clearInterval(timer);
     }
-  }, [running]);
+  }, [isRunning]);
 
   useEffect(() => {
     if (seconds > 2) {
@@ -33,13 +33,13 @@ export const useGlobalState = (): GlobalState => {
   }, [seconds]);
 
   return {
+    isRunning,
     onReset: () => {
       setRunning(false);
       setSeconds(0);
     },
     onToggle: () => setRunning((running) => !running),
     pokemons,
-    running,
     seconds,
   };
 };

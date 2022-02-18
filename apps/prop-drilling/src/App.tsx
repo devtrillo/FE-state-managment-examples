@@ -1,15 +1,15 @@
-import { Header,PokeList, Stopwatch } from "ui";
+import { Header, PokeList, Stopwatch } from "ui";
 
 import { useGlobalState } from "./store";
 
 function App() {
-  const { onToggle, running, seconds, pokemons, onReset } = useGlobalState();
+  const { onToggle, isRunning, seconds, pokemons, onReset } = useGlobalState();
   return (
     <div className="min-h-screen flex flex-col">
       <Header name="Prop drilling" strategy="Hooks" />
       <Stopwatch
         reset={onReset}
-        running={running}
+        running={isRunning}
         seconds={seconds}
         onToggle={onToggle}
       />

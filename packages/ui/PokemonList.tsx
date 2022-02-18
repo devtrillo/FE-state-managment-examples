@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { motion } from "framer-motion";
 import { Pokemon } from "types";
 
@@ -39,11 +39,9 @@ const PokeCard = ({ name, id }: { name: string; id: number }) => {
 export const PokeList: FC<Props> = ({ pokemons = [] }) => (
   <section className="flex-1">
     <ul className="flex flex-wrap items-center justify-center">
-      {pokemons
-        ? pokemons.map(({ name }, index) => (
-            <PokeCard key={name} name={name} id={index} />
-          ))
-        : null}
+      {pokemons?.map(({ name }, index) => (
+        <PokeCard key={name} name={name} id={index} />
+      ))}
     </ul>
   </section>
 );
